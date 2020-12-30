@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-1 col-lg-offset-11">
+        <button class="btn btn-danger" ui-sref="login">Logout</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-2">
+        <button class="btn btn-primary" ui-sref="item">Record New Product</button>
+    </div>
+</div>
+
+<h3>Product List</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                  <input type="checkbox" ng-model="selectAll" ng-click="checkAll()" />
+            </th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="(key, value) in items">
+            <td>
+                <input type="checkbox" ng-model="value.delete"/>
+            </td>
+            <td>{{value.code}}</td>
+            <td>{{value.name}}</td>
+            <td>{{value.brand}}</td>
+            <td>{{value.price}}</td>
+            <td>
+                <a href="" ui-sref="show({documentId: key, documentRevision: value._rev})">Show</a> |
+                <a href="" ui-sref="item({documentId: key, documentRevision: value._rev})">Edit</a> | 
+                <a href="" ng-click="delete(value._id, value._rev)">Delete</a>
+            </td>
+        </tr>
+        <tr ng-if="data == 0">
+            <td colspan="6" class="text-center">No recorded Data</td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="button" class="btn btn-danger" value="Delete selected" ng-click="deleteSelected($index)" />
