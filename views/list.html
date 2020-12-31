@@ -1,9 +1,11 @@
+<div ng-controller="ProductController">
+
 <div class="row">
-    <div class="col-lg-1 col-lg-offset-11">
+    <div class="col-lg-2">
         <button class="btn btn-danger" ui-sref="login">Logout</button>
     </div>
 </div>
-
+<br>
 <div class="row">
     <div class="col-lg-2">
         <button class="btn btn-primary" ui-sref="item">Record New Product</button>
@@ -35,7 +37,7 @@
             <td>{{value.price}}</td>
             <td>
                 <a href="" ui-sref="show({documentId: key, documentRevision: value._rev})">Show</a> |
-                <a href="" ui-sref="item({documentId: key, documentRevision: value._rev})">Edit</a> | 
+                <a href="" ui-sref="item({documentId: key, documentRevision: value._rev})">Edit</a> |
                 <a href="" ng-click="delete(value._id, value._rev)">Delete</a>
             </td>
         </tr>
@@ -46,3 +48,4 @@
 </table>
 
 <input type="button" class="btn btn-danger" value="Delete selected" ng-click="deleteSelected($index)" />
+  </div>
